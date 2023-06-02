@@ -22,10 +22,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=postgres
     volumes:
-      - pgdata:/var/lib/postgresql/data
-      - ./sql/table.sql:/docker-entrypoint-initdb.d/table.sql
+      - ./sql/atable.sql:/docker-entrypoint-initdb.d/atable.sql
       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
-volumes:
-  pgdata: {}
+
       

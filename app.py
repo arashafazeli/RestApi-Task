@@ -5,7 +5,7 @@ from os import environ
 app = Flask(__name__)
 # Cofigure the connection with a database
 app.config["SQLALCHEMY_DATABASE_URI"] = environ.get('DB_URL')
-# Give sqlalchemy away to handle our oapp
+# Give sqlalchemy away to handle our app
 db = SQLAlchemy(app)
 
 class Beer(db.Model):
@@ -19,18 +19,7 @@ class Beer(db.Model):
 
     def json(self):
         return {'id': id, "beer_id": self.beer_id, "name": self.name, "price": self.price, "alcohol_percentage": self.alcohol_percentage}
-#Initilize the database 
-db.create_all()
-def insert_dummy_data():
- 
-        beer1 = Beer(id='1', beer_id='73513513', name='Stockholm Beer', price=12.95, alcohol_percentage=5)
-        beer2 = Beer(id='2', beer_id='12345678', name='eriksberg', price=9.99, alcohol_percentage=4.5)
 
-        db.session.add(beer1)
-        db.session.add(beer2)
-        db.session.commit()
-insert_dummy_data()
-#create a test route
 @app.route('/test', methods=["GET"])
 def test():
     return make_response(jsonify({'message': 'test route'}), 200)
@@ -41,10 +30,10 @@ def get_beer(beer_id):
 
         if beer:
             return make_response(jsonify({
-                'beer_id': beer.beer_id, 
-                'name': beer.name,
-                'price': beer.price,
-                'alcoholPercentage': beer.alcohol_percentage
+                '1.beer_id': beer.beer_id, 
+                '2.name': beer.name,
+                '3.price': beer.price,
+                '4.alcoholPercentage': beer.alcohol_percentage
             }))
         else:
             return make_response(jsonify({'error': 'Beer not found'})), 404
@@ -69,17 +58,17 @@ def search_beer():
     response = []
     for beer in filtered_beers:
         response.append({
-            'id': beer.id,
-            'name': beer.name,
-            'price': beer.price,
-            'alcoholPercentage': beer.alcohol_percentage
+            '1.beer_id': beer.beer_id,
+            '2.name': beer.name,
+            '3.price': beer.price,
+            '4.alcoholPercentage': beer.alcohol_percentage
         })
     return jsonify(response)
 
 @app.route('/health', methods=['GET'])
 def check_health():
     try:
-        db.session.query("1").from_statement("SELECT 1").all()
+        db.session.execute("SELECT 1")
         return jsonify({'status': 'Database connection is healthy'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
