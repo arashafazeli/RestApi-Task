@@ -2,16 +2,9 @@
 
 This is a RESTful API built with Flask for managing beer store data. It provides endpoints to retrieve beer information, search for beers based on various parameters, and check the health of the database connection.
 
+![Screenshot from 2023-06-03 01-17-27](https://github.com/arashafazeli/RestApi-Task/assets/90246599/75e1d6e1-a07f-4e71-9e62-98485ed5c906)
+
          
-    ______________________Docker-compose________________________
-    |     ____________                       _____________     |
-         |            |    | Dockerfile |   |             |    |_______
- GET-----| FLASK-APP  |=====================|  POSTGRESQL |    |       |   
- POST    |            |                     |             |====|SQLFILE|
- HEALTH  |____________|                     |_____________|    |_______|
-                |                                  |
-                |                                  | 
-             Postman(Endpoint test)             Tableplus(database dashboard)
 ## Setup
 1. Clone the repository: 
 '''git clone https://github.com/arashafazeli/RestApi-Task.git'''
