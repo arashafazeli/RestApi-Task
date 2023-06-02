@@ -6,8 +6,8 @@ This is a RESTful API built with Flask for managing beer store data. It provides
     ______________________Docker-compose________________________
     |     ____________                       _____________     |
          |            |    | Dockerfile |   |             |    |_______
- GET---->| FLASK-APP  |====================>|  POSTGRESQL |    |       |   
- POST    |            |                     |             |<===|SQLFILE|
+ GET-----| FLASK-APP  |=====================|  POSTGRESQL |    |       |   
+ POST    |            |                     |             |====|SQLFILE|
  HEALTH  |____________|                     |_____________|    |_______|
                 |                                  |
                 |                                  | 
