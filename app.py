@@ -72,7 +72,20 @@ def check_health():
         return jsonify({'status': 'Database connection is healthy'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
+
+@app.route('/beer/<beer_id>', methods=['DELETE'])
+def delete_beer(beer_id):
+    beer = Beer.query.filter_by(beer_id=beer_id).first()
+
+    if beer:
+        deleted_beer_name = beer.name  # Store the name of the beer before deleting
+        db.session.delete(beer)
+        db.session.commit()
+        return make_response(jsonify({'Deleted beer': f'"{deleted_beer_name}" deleted'}), 200)
+    else:
+        return make_response(jsonify({'error': 'Beer not found'}), 404)
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
 
