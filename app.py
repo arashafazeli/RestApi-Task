@@ -85,6 +85,33 @@ def delete_beer(beer_id):
     else:
         return make_response(jsonify({'error': 'Beer not found'}), 404)
 
+import traceback
+
+@app.route('/add-beer', methods=['POST'])
+def add_beer():
+    # Get the data from the request payload
+    data = request.get_json()
+
+    # Extract the beer details from the payload
+    id = data.get("id")
+    beer_id = data.get('beer_id')
+    name = data.get('name')
+    price = data.get('price')
+    alcohol_percentage = data.get('alcohol_percentage')
+
+    # Create a new Beer instance
+    new_beer = Beer(id=id, beer_id=beer_id, name=name, price=price, alcohol_percentage=alcohol_percentage)
+
+    try:
+        # Add the new beer to the database
+        db.session.add(new_beer)
+        db.session.commit()
+        return jsonify({'message': 'Beer added successfully'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

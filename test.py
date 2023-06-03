@@ -1,15 +1,17 @@
 import unittest
 import json
-from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-
 from app import app, db, Beer
+from os import environ
 
+db = SQLAlchemy(app)
 class FlaskTestCase(unittest.TestCase):
 
     def setUp(self):
-        app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
+        environ["DB_URL"] = "sqlite:///:memory:"
+        app.config["SQLALCHEMY_DATABASE_URI"] = environ.get('DB_URL')
         app.config["TESTING"] = True
+        app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False 
         self.app = app.test_client()
         db.create_all()
 
