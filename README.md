@@ -12,7 +12,7 @@ This is a RESTful API built with Flask for managing beer store data. It provides
     - cd Restapi-Task
 3. Create and activate a virtual environment:
     - python3 -m venv venv
--    source venv/bin/activate
+    - source venv/bin/activate
 4. Install the required dependencies:
     - pip install -r requirements.txt
 5. Start the Flask application:
