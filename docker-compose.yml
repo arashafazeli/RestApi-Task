@@ -24,6 +24,4 @@ services:
     volumes:
       - ./sql/atable.sql:/docker-entrypoint-initdb.d/atable.sql
       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
-
-
       

@@ -21,3 +21,4 @@ This is a RESTful API built with Flask for managing beer store data. It provides
 
     - docker exec -it < DATABASE CONTAINER NAME > bash
     - psql -U < DATABASE USERNAME >
+    - SELECT * FROM < DATABASE NAME >;
