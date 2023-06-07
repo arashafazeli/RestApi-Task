@@ -27,13 +27,19 @@ This is a RESTful API built with Flask for managing beer store data. It provides
 
 ## Response Time:
  Measure the time taken by the service to respond to requests. This metric helps evaluate the service's performance and identify potential bottlenecks.
+- curl -w "%{time_total}\n" -X GET http://localhost:4000/test
 
 ## Error Rate:
  Monitor the rate of errors or failed requests. This metric indicates the service's reliability and can help identify issues that need attention.
 
 ## Request Rate:
  Track the number of requests the service receives over time. This metric helps understand the service's load and capacity requirements.
-
+ To test the request rate for this API:
+ 1. Install ApacheBench:
+    - sudo apt-get install apache2-utils(ubuntu)
+ 2. Open a terminal and run the following command to test the request rate: 
+    - ab -n 1000 -c 100 http://localhost:4000/test
+This command will send 1000 requests with a concurrency of 100 to the /test endpoint
 ## Database Connection Status:
  Monitor the health of the database connection to ensure the service can successfully connect and interact with the database.
 
@@ -48,7 +54,8 @@ This is a RESTful API built with Flask for managing beer store data. It provides
 
 ## Latency:
  Measure the time taken for requests to travel from the client to the service and back. This metric helps assess the overall user experience.
-
+https://www.nginx.com/blog/api-real-time-test-latency-responsiveness-nginx-rtapi-tool/
+https://cloud.google.com/appengine/docs/standard/monitoring-and-alerting-latency#setting_up_monitoring_and_alerting
 
 Key metrics for PostgreSQL monitoring:
 Read query throughput and performance
