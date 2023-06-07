@@ -25,25 +25,30 @@ This is a RESTful API built with Flask for managing beer store data. It provides
 
 metrics to monitor for this specific service:
 
-Response Time: Measure the time taken by the service to respond to requests. This metric helps evaluate the service's performance and identify potential bottlenecks.
+## Response Time:
+ Measure the time taken by the service to respond to requests. This metric helps evaluate the service's performance and identify potential bottlenecks.
 
-Error Rate: Monitor the rate of errors or failed requests. This metric indicates the service's reliability and can help identify issues that need attention.
+## Error Rate:
+ Monitor the rate of errors or failed requests. This metric indicates the service's reliability and can help identify issues that need attention.
 
-Request Rate: Track the number of requests the service receives over time. This metric helps understand the service's load and capacity requirements.
+## Request Rate:
+ Track the number of requests the service receives over time. This metric helps understand the service's load and capacity requirements.
 
-Database Connection Status: Monitor the health of the database connection to ensure the service can successfully connect and interact with the database.
+## Database Connection Status:
+ Monitor the health of the database connection to ensure the service can successfully connect and interact with the database.
 
-HTTP Status Codes: Monitor the distribution of HTTP status codes returned by the service. This metric helps identify any abnormal or unexpected responses.
+## HTTP Status Codes:
+ Monitor the distribution of HTTP status codes returned by the service. This metric helps identify any abnormal or unexpected responses.
 
-Endpoint Availability: Track the availability of critical endpoints. This metric ensures that the service is accessible and functioning correctly.
+## Endpoint Availability:
+ Track the availability of critical endpoints. This metric ensures that the service is accessible and functioning correctly.
 
-CPU and Memory Usage: Monitor the resource utilization of the service, including CPU and memory usage. This metric helps identify potential performance issues or resource constraints.
+## CPU and Memory Usage:
+ Monitor the resource utilization of the service, including CPU and memory usage. This metric helps identify potential performance issues or resource constraints.
 
-Latency: Measure the time taken for requests to travel from the client to the service and back. This metric helps assess the overall user experience.
+## Latency:
+ Measure the time taken for requests to travel from the client to the service and back. This metric helps assess the overall user experience.
 
-The choice of these metrics is based on the common monitoring needs of a typical web service. Response time, error rate, and request rate provide insights into performance and reliability. Monitoring the database connection ensures the service's ability to interact with the database. Monitoring HTTP status codes, endpoint availability, CPU and memory usage, and latency helps identify issues and optimize the service for better user experience.
-
-It's worth noting that the specific metrics to monitor may vary depending on the service's requirements and priorities.
 
 Key metrics for PostgreSQL monitoring:
 Read query throughput and performance
