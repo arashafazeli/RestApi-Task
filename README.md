@@ -2,7 +2,7 @@
 
 This is a RESTful API built with Flask for managing beer store data. It provides endpoints to retrieve beer information, search for beers based on various parameters, and check the health of the database connection.
 
-![Screenshot from 2023-06-03 01-17-27](https://github.com/arashafazeli/RestApi-Task/assets/90246599/75e1d6e1-a07f-4e71-9e62-98485ed5c906)
+![Screenshot from 2023-06-03 01-17-27](https://github.com/arashafazeli/RestApi-Task/assets/90246599/c138c75d-871b-4d11-b7ef-2059df97c13a)
 
          
 ## Setup
