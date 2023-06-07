@@ -42,10 +42,6 @@ This is a RESTful API built with Flask for managing beer store data. It provides
 This command will send 1000 requests with a concurrency of 100 to the /test endpoint
 ## Database Connection Status:
  Monitor the health of the database connection to ensure the service can successfully connect and interact with the database.
-
-## HTTP Status Codes:
- Monitor the distribution of HTTP status codes returned by the service. This metric helps identify any abnormal or unexpected responses.
-
 ## Endpoint Availability:
  Track the availability of critical endpoints. This metric ensures that the service is accessible and functioning correctly.
 
