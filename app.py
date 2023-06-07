@@ -107,9 +107,9 @@ def add_beer():
     alcohol_percentage = data.get('alcohol_percentage')
 
     # Check if the beer already exists in the database
-    existing_beer = Beer.query.filter_by(beer_id=beer_id).first()
+    existing_beer = Beer.query.filter((Beer.id == id) | (Beer.beer_id == beer_id)).first()
     if existing_beer:
-        return jsonify({'message': 'Beer already exists'})
+        return jsonify({'message': 'Beer already exists with this id or beer_id'})
 
     # Create a new Beer instance
     new_beer = Beer(id=id, beer_id=beer_id, name=name, price=price, alcohol_percentage=alcohol_percentage)
@@ -121,6 +121,7 @@ def add_beer():
         return jsonify({'message': 'Beer added successfully'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
 
 
 if __name__ == '__main__':
