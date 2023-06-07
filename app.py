@@ -88,7 +88,7 @@ def delete_beer(beer_id):
         deleted_beer_name = beer.name  # Store the name of the beer before deleting
         db.session.delete(beer)
         db.session.commit()
-        return make_response(jsonify({'Deleted beer': f'"{deleted_beer_name}" deleted'}), 200)
+        return make_response(jsonify({'Deleted beer': f'{deleted_beer_name} deleted'}), 200)
     else:
         return make_response(jsonify({'error': 'Beer not found'}), 404)
 
