@@ -53,10 +53,10 @@ This command will send 1000 requests with a concurrency of 100 to the /test endp
 https://www.nginx.com/blog/api-real-time-test-latency-responsiveness-nginx-rtapi-tool/
 https://cloud.google.com/appengine/docs/standard/monitoring-and-alerting-latency#setting_up_monitoring_and_alerting
 
-Key metrics for PostgreSQL monitoring:
-Read query throughput and performance
-Write query throughput and performance
-Replication and reliability
-Resource utilization: Insufficient CPU or memory can seriously impact application performance. If utilization is high, you may consider increasing the Cloud SQL instance size.Running out of disk space can bring your application to a halt. Even if you’ve opted for automatic storage increases, it’s still a good idea to keep track of disk utilization since these automatic storage increases will add to your GCP costs.
-SQL connections: It’s important to ensure that the number of connections to the Cloud SQL MySQL instance doesn’t exceed the connection quota for your GCP project.
-Auto-failover requests and replication lag: Auto-failover occurs for HA Cloud SQL database instances when the primary instance becomes unavailable. The amount of time it takes the failover instance to catch up to the primary instance state depends on the replication lag. Ensuring that the replication doesn’t become excessive can speed up failover events and minimize impact to your applications
+# Key metrics for PostgreSQL monitoring:
+- Storage usage
+- CPU usage
+- Memory usage
+- Read/Write operations
+- Ingress/Egress bytes/sec
+- Active connections
