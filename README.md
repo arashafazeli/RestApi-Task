@@ -22,3 +22,33 @@ This is a RESTful API built with Flask for managing beer store data. It provides
     - docker exec -it < DATABASE CONTAINER NAME > bash
     - psql -U < DATABASE USERNAME >
     - SELECT * FROM < DATABASE NAME >;
+
+metrics to monitor for this specific service:
+
+Response Time: Measure the time taken by the service to respond to requests. This metric helps evaluate the service's performance and identify potential bottlenecks.
+
+Error Rate: Monitor the rate of errors or failed requests. This metric indicates the service's reliability and can help identify issues that need attention.
+
+Request Rate: Track the number of requests the service receives over time. This metric helps understand the service's load and capacity requirements.
+
+Database Connection Status: Monitor the health of the database connection to ensure the service can successfully connect and interact with the database.
+
+HTTP Status Codes: Monitor the distribution of HTTP status codes returned by the service. This metric helps identify any abnormal or unexpected responses.
+
+Endpoint Availability: Track the availability of critical endpoints. This metric ensures that the service is accessible and functioning correctly.
+
+CPU and Memory Usage: Monitor the resource utilization of the service, including CPU and memory usage. This metric helps identify potential performance issues or resource constraints.
+
+Latency: Measure the time taken for requests to travel from the client to the service and back. This metric helps assess the overall user experience.
+
+The choice of these metrics is based on the common monitoring needs of a typical web service. Response time, error rate, and request rate provide insights into performance and reliability. Monitoring the database connection ensures the service's ability to interact with the database. Monitoring HTTP status codes, endpoint availability, CPU and memory usage, and latency helps identify issues and optimize the service for better user experience.
+
+It's worth noting that the specific metrics to monitor may vary depending on the service's requirements and priorities.
+
+Key metrics for PostgreSQL monitoring:
+Read query throughput and performance
+Write query throughput and performance
+Replication and reliability
+Resource utilization: Insufficient CPU or memory can seriously impact application performance. If utilization is high, you may consider increasing the Cloud SQL instance size.Running out of disk space can bring your application to a halt. Even if you’ve opted for automatic storage increases, it’s still a good idea to keep track of disk utilization since these automatic storage increases will add to your GCP costs.
+SQL connections: It’s important to ensure that the number of connections to the Cloud SQL MySQL instance doesn’t exceed the connection quota for your GCP project.
+Auto-failover requests and replication lag: Auto-failover occurs for HA Cloud SQL database instances when the primary instance becomes unavailable. The amount of time it takes the failover instance to catch up to the primary instance state depends on the replication lag. Ensuring that the replication doesn’t become excessive can speed up failover events and minimize impact to your applications

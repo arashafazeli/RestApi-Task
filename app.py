@@ -1,8 +1,15 @@
 from flask import Flask, request, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 from os import environ
+from prometheus_flask_exporter import PrometheusMetrics
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logging.info("Setting LOGLEVEL to INFO")
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
+metrics.info("app_info", "App Info, this can be anything you want", version="1.0.0")
 # Cofigure the connection with a database
 app.config["SQLALCHEMY_DATABASE_URI"] = environ.get('DB_URL')
 # Give sqlalchemy away to handle our app
@@ -99,6 +106,11 @@ def add_beer():
     price = data.get('price')
     alcohol_percentage = data.get('alcohol_percentage')
 
+    # Check if the beer already exists in the database
+    existing_beer = Beer.query.filter_by(beer_id=beer_id).first()
+    if existing_beer:
+        return jsonify({'message': 'Beer already exists'})
+
     # Create a new Beer instance
     new_beer = Beer(id=id, beer_id=beer_id, name=name, price=price, alcohol_percentage=alcohol_percentage)
 
@@ -111,8 +123,6 @@ def add_beer():
         return jsonify({'error': str(e)}), 500
 
 
-
-
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=4000)
 
