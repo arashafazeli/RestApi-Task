@@ -23,7 +23,7 @@ This is a RESTful API built with Flask for managing beer store data. It provides
     - psql -U < DATABASE USERNAME >
     - SELECT * FROM < DATABASE NAME >;
 
-metrics to monitor for this specific service:
+# metrics to monitor for this specific service:
 
 ## Response Time:
  Measure the time taken by the service to respond to requests. This metric helps evaluate the service's performance and identify potential bottlenecks.
