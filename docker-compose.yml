@@ -12,7 +12,6 @@ services:
       - flask_db
     links:
       - prometheus
-
   flask_db:
     container_name: flask_db
     image: postgres:12
@@ -25,7 +24,15 @@ services:
     volumes:
       - ./sql/atable.sql:/docker-entrypoint-initdb.d/atable.sql
       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
-
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter
+    ports:
+      - 9187:9187
+    environment:
+      DATA_SOURCE_NAME: "postgresql://flask_db:postgres@postgres:5432/shop?sslmode=disable"
+    links:
+      - flask_db
+      - prometheus
   prometheus:
     image: prom/prometheus:v2.27.0
     volumes:
@@ -37,10 +44,9 @@ services:
       - '--web.console.templates=/usr/share/prometheus/consoles'
     ports:
       - 9090:9090
-
   grafana:
     image: grafana/grafana:7.5.6
-    environment: 
+    environment:
       GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION: "true"
       GF_AUTH_ANONYMOUS_ENABLED: "true"
       GF_AUTH_ANONYMOUS_ORG_ROLE: "Admin"
@@ -50,5 +56,5 @@ services:
       - ./monitoring/datasource.yml:/etc/grafana/provisioning/datasource.yml
     ports:
       - 3000:3000
-    depends_on: 
+    depends_on:
       - prometheus
